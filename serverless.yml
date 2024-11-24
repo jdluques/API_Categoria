@@ -30,6 +30,33 @@ functions:
     environment:
       TABLE_NAME: ${self:provider.environment.CATEGORIA_TABLE}
 
+  deleteCategoria:
+    handler: categoria/handler_delete_categoria.lambda_handler
+    events:
+      - http:
+          path: categoria/delete
+          method: delete
+    environment:
+      TABLE_NAME: ${self:provider.environment.CATEGORIA_TABLE}
+
+  listCategorias:
+    handler: categoria/handler_list_categorias.lambda_handler
+    events:
+      - http:
+          path: categoria/list
+          method: get
+    environment:
+      TABLE_NAME: ${self:provider.environment.CATEGORIA_TABLE}
+
+  updateCategoria:
+    handler: categoria/handler_update_categoria.lambda_handler
+    events:
+      - http:
+          path: categoria/update
+          method: put
+    environment:
+      TABLE_NAME: ${self:provider.environment.CATEGORIA_TABLE}
+
 resources:
   Resources:
     CategoriasDynamoDbTable:
